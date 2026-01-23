@@ -1,96 +1,79 @@
-const val bConst:Int=10
 fun main() {
-    println("123")
-    //var a = 10
-    //var a:Int = 10
-    //a = 3
-    //val a = 10
-    //val - не можем изменить
-    //var - можем менять
-    //val a: Long = 22L
-    //val a: UInt = 22U
-    //val a:Float = 1.78F
-    //val a: Boolean = true
-    //val a:String = "23"
-    /*val name = "Anna"
-    val lastName = "Petrova"
-    val fullName = "Hello $name $lastName"
-    println(fullName)*/
-    /*var longN:Long = 2
-    var intN: Int = 4
-    longN = intN.toLong()
-    println(longN)*/
-    /*var name:Any = "Tom"
-    name = 979879*/
-    //val name = readLine()
-    /*val x = 11
-    var y = 5
-    val z = x/y
-    println(z)
-    val q = y++*/
-    /*val a = 11
-    val b = 5
-    val c: Boolean = a>b
-    println(c)*/
-    /*val a = true
-    val b = false
-    val c = a and b//&&
-    val d = a or b//||
-    val e = a xor b//!=
-    println(c)*/
-    /*val a = 5
-    val b = a in 1..6
-    println(b)
-    if (a==0){
-        println("a=$a")
+    /*val num:Array<Int> = arrayOf(1, 2 ,3, 3, 4)//явная типизация
+    val arr = arrayOf(1, 2, 3, 4)
+    var ar = arrayOfNulls<Int>(3)*/
+
+    /*val num = Array(3, {5})//[5, 5, 5]
+    val arr = arrayOf(1, 2, 3, 4)
+    val n = arr[1]
+    println(n)
+    arr[2]=7
+    println(arr.size)
+    for(arr1 in arr){
+        println("$arr1 \t")
     }
-    val c = if(a>4){
-        println(a)
-        a
-    }else{
-        println("a")
-        a+1
-    }*/
+    var boo = 4 in num//false
+    print(boo)
+    boo = 2 !in arr//false
+    print(boo)
+    val nu: IntArray = intArrayOf(1,2,3,4,5)*/
+    some("df")
+    some("La", sur = "Joe", age = 24)
 
-    /*val isEnable = true
-    when(isEnable){
-        false->println("qwerty")
-        true->println("12345")
-    }*/
+    fun sime() {
+        print("lala")
+    }
+    sime()
 
-    /*var a = 30
-    when(a){//аналог switch
-        10, 15-> {
-            println("qwerty")
-            a*=2
-        }
-        in 20..30->println("12345")
-        else->println("1234567")
-    }*/
+    var nums = intArrayOf(1, 2, 3, 4)
+    duble(nums)
+    print(nums[0])
 
-    /*for(n in 1..9){
-        println("${n*n}\t")
-    }*/
+    printString("Tom", "Bob", "Anna")
+    printString("Tom", "Bob", "Anna", "Lef")
+    printString("Tom", "Lef")
 
-    /*val range = 1..5
-    val range1 = 10 downTo 1 step 3
-    val range2 = 1 until 5
-    print(range1)*/
+    sum(1, 2, 3, 4)
+    sum(1, 2, 3, 4, 5, 4, 2)
 
-    /*val num: Array<Int> = arrayOf(1, 2, 3)
-    val arr = arrayOf(1,2,3)
-    val nom = arrayOfNulls<Int>(3)*/
-    /*var num = IntArray(3)
-    num[0] = 10
-    num[1] = 20
-    num = IntArray(5)*/
+    printUser(3, "Tom", "Bob", "Anna")
 
-    /*val num = Array(3, {5})
-    for(number in num){
-        print("$number ")
-    }*/
-    /*val num = (1..5).toList().toIntArray()
-    for(i in 0 until num.size step 2){
-        println(num[i])
-    }*/
+    val a = so(2, 4)
+}
+
+fun some(name: String, age: Int = 18, sur: String = "manager") {
+    println(name + " " + age + " " + sur)
+}
+
+fun duble(numbers: IntArray) {
+    numbers[0] = numbers[0] * 2
+    println("Value ${numbers[0]}")
+}
+
+fun printString(vararg string: String) {
+    for (str in string) {
+        println(str)
+    }
+}
+
+fun sum(vararg num: Int) {
+    var res = 0
+    for (n in num) {
+        res += n
+    }
+    println(res)
+}
+
+fun printUser(count: Int, vararg users:String){
+    println(count)
+    for(user in users){
+        println(user)
+    }
+}
+
+fun so(x:Int, y:Int):Int{
+    return x+y
+}
+fun so(x: Double, y: Double): Double{
+    return x+y
 }
