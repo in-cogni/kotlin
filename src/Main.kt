@@ -1,15 +1,40 @@
+import java.io.FileInputStream
+
 fun main() {
-    /*val tom: Person = Person()
-    print(tom.age)
-    print(tom.name)
-    tom.name = "tom"
+    try{
+        val n1 = 1
+        val n2 = 0
+        val result=n1/n2
+    }catch(e: Exception){
+        println(e.message)
+        for(line in e.stackTrace){
+            println("at $line")
+        }
+    }finally {
+        println("finally")
+    }
 
-    tom.sayHello()
-    tom.personToString()
-    tom.go("Mall")*/
+    val stream = FileInputStream("")
+    try{
+        //
+    }finally {
+        stream.close()
+    }
 
-    val person: Person = Person("Tom", 19)
-    //val alen: Person = Person("Jo")
+    var n:Int? = null
+    n = 34
 
+    var name: String = "Tom"
+    val user: String = name?:"Uknown"
 
+    val s: String = "12"
+    val d: Int = s.toInt()
+    println(d)
+}
+fun test(): Int{
+    try{//вернет 2
+        return 1
+    }finally {
+        return 2
+    }
 }
