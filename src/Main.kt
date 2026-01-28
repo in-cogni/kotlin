@@ -1,24 +1,27 @@
 fun main(){
-    //1
-    val book1 = Book("Book1", 230)
-    val book2 = Book("Book2", -345)
+    println(getLength("Hohoho"))
+    println(getLength(null))
+    println(getLength(""))
 
-    book1.printData()
-    book2.printData()
-
-    book2.pages=-29
-    book2.printData()
-
-    //2
-    val product1 = Product("Product1", 120.90)
-    val product2 = Product("Product2", 129.90)
-    val product3 = Product("Product2", 129.90)
-
-    println(product1.toString())
-    println(product2.toString())
-    println(product3.toString())
-    println((product3==product2).toString())
-    println((product3==product1).toString())
-    product3.applyDiscount(10)
-    println(product3.toString())
+    println(any("abc"))
+    println(any(4))
+    println(any(null))
+    println(any(2.5))
+}
+fun getLength(str: String?):Int{
+    return str?.length ?:0
+}
+fun any(value: Any?):Int{
+    val str = value as? String
+    if(str!=null){
+        return str.length
+    }
+    val num = value as? Int
+    if(num!=null){
+        return num*num
+    }
+    if(value==null){
+        return -1
+    }
+    return 0
 }
