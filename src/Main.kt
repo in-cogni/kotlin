@@ -1,27 +1,21 @@
 fun main(){
-    println(getLength("Hohoho"))
-    println(getLength(null))
-    println(getLength(""))
+    //1
+    val text: String? = "string"
+    text?.let {
+        it.printLength()
+    }
 
-    println(any("abc"))
-    println(any(4))
-    println(any(null))
-    println(any(2.5))
+    //2
+    val box = Box().apply {
+        width = 10
+        height = 5
+    }
+    box.also{
+        println("Объект создан")
+    }
+    println("Площадь ${box.area()}")
+
 }
-fun getLength(str: String?):Int{
-    return str?.length ?:0
-}
-fun any(value: Any?):Int{
-    val str = value as? String
-    if(str!=null){
-        return str.length
-    }
-    val num = value as? Int
-    if(num!=null){
-        return num*num
-    }
-    if(value==null){
-        return -1
-    }
-    return 0
+fun String.printLength(){
+    println("Длина строки: ${this.length}")
 }
