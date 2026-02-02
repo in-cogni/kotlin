@@ -1,101 +1,64 @@
-import kotlin.reflect.KProperty
+import java.util.HashSet
 
 fun main(){
-    /*val hello: String = "Hello"
-    println(hello.wordCount('l'))
-    println(hello.wordCount('o'))
-    println(4.square())
-    println(6.square())*/
-    /*val counter1 = Counter(5)
-    val counter2 = Counter(7)
+    /*var numbers = listOf(1, 2, 3, 4, 5)//List<Int>
+    var people = listOf("Tom", "Bob", "Jake", "Joe", "Kate", "Martin")//List<Int>
 
-    val result = counter1>counter2
-    val counter3:Counter=counter1+counter2*/
+    val first = people.get(1)
+    val first1 = people.get(0)
+    val first2 = people.getOrElse(10) {"Undefined"}
+    val first3 = people.getOrNull(10)
+    println("$first, $first1, $first2, $first3")
 
-    /*val tom=Person("Tom")
-    println(tom.name)*/
-
-    val sam = Human("Sam", "123@gmail.com", null)
-    val tom = Human("Tom", null, null )
-
-    //let - проверкм на null/преобразование значений
-    //принимает this, возвращает результат
-    sam.email?.let(::println)
-    //analog
-    //if (sam.email!=null) println("EMAIL ${sam.email}")
-    tom.email?.let { println("Email $it") }
-
-    //with - надо выполнить над объектом набор операций как единое целое
-    // - применяется для установки свойств объектов (если через конструктор были переданы некорректные значения
-    //принимает this, возвращает результат
-    with(tom){
-        if (email==null) email="${name.lowercase()}@qmail.com"
-        if (age !in 1..110) age = 18
+    for (peopleList in people){
+        println(peopleList)
     }
-    println("${tom.name} (${tom.age})-${tom.email}")
 
-    //run - выполнение и получения результата
-    val emailTom = tom.run{
-        if (email==null) email="${name.lowercase()}@qmail.com"
-        email
+    val subPeople=people.subList(1, 4)
+    println(subPeople)*/
+
+    /*var numbers1: ArrayList<Int> = arrayListOf(1,2,3,4,5)
+    var numbers2: MutableList<Int> = mutableListOf(1,2,3,4,5)
+    numbers2.add(4)
+    numbers2.add(0, 23)
+    numbers2.addAll(0, listOf(-3,-2,-1))
+    numbers2.removeAt(0)
+    numbers2.remove(5)
+    println(numbers2)
+    numbers2.clear()*/
+
+    /*var numbers = setOf(2, 3, 4)
+    var people1=setOf("Tom", "Sam", "Bob")
+    var people2=setOf("Tom", "Tuk", "Joe")
+    var peopleList = listOf("Tom", "Bob", "Tom", "Joe", "Kate", "Martin")//List<Int>
+    val unique = peopleList.toSet()
+    println(unique)
+
+    val all=people1.union(people2)
+    val common = people1.intersect(people2)
+    val different = people1.subtract(people2)
+    println("$all\n$common\n$different")*/
+
+    /*val num: MutableSet<Int> = mutableSetOf(35,36,37)
+    val num1: HashSet<Int> = hashSetOf(35,36,37)
+
+    val people = mapOf(1 to "Alex", 2 to "Andrew")//Map<Int, String>
+    for (per in people){
+        println("${per.key} ${per.value}")
     }
-    println(emailTom)
+    println(people)
+    val a = people.get(1)
+    println(a)
 
-    //apply - построение(настройка) объекта
-    //принимает it, возвращает результат
-    tom.apply {
-        if (email==null) email="${name.lowercase()}@qmail.com"
-    }
-    println(tom.email)
-    val bob = Employee()
-    bob.name("bob")
-    bob.age(26)
-    bob.company("Google")
-    println("${bob.name} (${bob.age})-${bob.company}")
+    val people1 = mutableMapOf(1 to "Alex", 2 to "Joe")
+    people1.put(3, "Mike")
+    println(people1)
+    people1.set(3, "Tom")
+    println(people1)*/
 
-    //also - принимает it возващает объект
-    //дополнительное действие
-    val joe = Human("Joe", null, null)
-    joe.also{
-        if(it.email==null){
-            it.email = "${it.name.lowercase()}%gmail.com"
-        }
-    }
-    println(tom.email)
+    /*val people = sequenceOf("Joe", "Barb", "Pol")//Sequence<String>
+    println(people.joinToString())
+    println((people.asSequence()).joinToString())*/
 
-    //отличия this/it:
-    //it - явно указываем имя (tom.name)
-    //this - не нужно указывать(name)
-}
-data class Human(val name:String, var email: String?, var age:Int?)
-data class Employee(var name:String="", var age:Int = 0, var company:String=""){
-    fun name(_name: String):Employee = apply{name=_name}
-    fun age(_age:Int):Employee = apply{age=_age}
-    fun company(_company: String):Employee = apply{company=_company}
 
-}
-
-class Person(_name:String){
-    val name: String by Logger(_name)
-}
-class Logger(val _personName: String){
-    operator fun getValue(thisRef:Person, property: KProperty<*>): String{
-        println("Запрошено св-во +${property.name}")
-        println("Установить значение +${_personName}")
-        return "Tom"
-    }
-}
-
-fun String.wordCount(c:Char):Int{
-    var count=0
-    for (n in this){
-        if (n==c){
-            count++
-        }
-    }
-    return count
-}
-
-fun Int.square():Int{
-    return this*this
 }
